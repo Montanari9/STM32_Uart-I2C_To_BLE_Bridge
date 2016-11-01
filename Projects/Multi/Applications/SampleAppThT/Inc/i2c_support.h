@@ -50,14 +50,16 @@
  */
 
 /* Size of Reception buffer */
-#define I2CBUFFERSIZE 1
+
 
 /* Exported macro ------------------------------------------------------------*/
-#define I2C_USE
-#define DEV_ADDRESS 0x40
+//#define I2C_USE
+
 
 /* Exported variables ------------------------------------------------------- */
-
+#ifdef I2C_USE
+#define I2CBUFFERSIZE 1
+#define DEV_ADDRESS 0x40
 extern I2C_HandleTypeDef hi2c1;
 extern uint8_t ReadI2CFlag;
 extern uint8_t aI2CBuffer[I2CBUFFERSIZE];
@@ -66,7 +68,7 @@ extern uint8_t aI2CBuffer[I2CBUFFERSIZE];
 
 void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c);
 void MX_I2C1_Init(void);
-
+#endif
 #endif /* __UART_SUPPORT_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
